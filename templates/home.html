@@ -1,0 +1,13 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in blog_list_view %}
+        <div class="post-entry">
+            <div><h4>{{ post.created_date }} | {{post.author}}</h2>
+            </div>
+            <h3><a href="{{ post.get_absolute_url }}" target="_blank">{{ post.title }}</a></h3>
+            <p>{{ post.body|truncatechars:50 }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

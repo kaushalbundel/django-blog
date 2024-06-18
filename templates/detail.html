@@ -1,0 +1,22 @@
+<!doctype html>
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="detail_view">
+        <div>
+            <h3>{{detail_list_view.created_date}} | {{ detail_list_view.author }} </h3>
+        </div>
+       <div>
+           <h2>{{ detail_list_view.title }}</h2>
+       </div>
+       <div>
+           <p>
+               {{detail_list_view.body}}
+           </p>
+       </div>
+       <div>
+           <a href={% url 'post_edit' detail_list_view.pk %}>Edit This Post</a>
+           <a href={% url 'post_delete' detail_list_view.pk %}>- Delete Post</a>
+       </div>
+    </div>
+{% endblock content %}
