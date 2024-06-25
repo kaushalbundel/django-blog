@@ -26,6 +26,18 @@
         <a href="{% url 'post_new' %}">+ New Blog Post</a>
       </div>
     </header>
+    <div class="user-name">
+      {% if user.is_authenticated %}
+      <h3>Hi {{ user.username }} !</h3>
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+      {% else %}
+      <p>You are not logged!</p>
+      <a href="{% url 'login' %}">Log In</a>
+      {% endif %}
+    </div>
     <div>{% block content %} {% endblock content %}</div>
   </body>
 </html>
